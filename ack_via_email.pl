@@ -2,8 +2,8 @@
 # Same thing as parsemail.py, just a little harder to read.
 # Parse an email from stdin and acknowledge a Nagios alert.
 # Passed in from /var/lib/nagios/.procmailrc
-use strict;
 
+use strict;
 my $ack;
 my $command;
 my $commandfile = '/var/lib/nagios3/rw/nagios.cmd';
