@@ -7,7 +7,7 @@ set -e
 # Skeleton script using the aws-cli. 
 # This creates a VPC, 
 # starts an EC2 instance in that VPC,  
-# then creates an ELB and attach the instance. 
+# then creates an ELB and attaches the instance. 
 # Everything gets a tag. 
 
 VPC_ID=$(aws ec2 create-vpc --cidr-block 192.168.0.0/16 --query Vpc.VpcId --output text)  
