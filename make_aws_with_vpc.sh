@@ -7,7 +7,7 @@ set -e
  
 # 1) Create a VPC with a single subnet and gateway. 
 # 2) Start an EC2 instance in that VPC.  
-# 3) Create an ELB and attaches the instance. 
+# 3) Create an ELB and attach the instance. 
 # 4) Tag everything. 
 
 VPC_ID=$(aws ec2 create-vpc --cidr-block 192.168.0.0/16 --query Vpc.VpcId --output text)  
