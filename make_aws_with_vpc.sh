@@ -4,11 +4,12 @@ set -u
 set -e
 
 
-# Skeleton script using the aws-cli. 
-# This creates a VPC, 
-# starts an EC2 instance in that VPC,  
-# then creates an ELB and attaches the instance. 
-# Everything gets a tag. 
+# Basic but fully functional script using newer features of the aws-cli. 
+ 
+# 1) Creates a VPC with a single subnet and gateway. 
+# 2) Starts an EC2 instance in that VPC.  
+# 3) Creates an ELB and attaches the instance. 
+# 4) Tags everything. 
 
 VPC_ID=$(aws ec2 create-vpc --cidr-block 192.168.0.0/16 --query Vpc.VpcId --output text)  
 
@@ -39,7 +40,6 @@ aws ec2 authorize-security-group-ingress --group-id $SECURITY_GROUP --protocol t
 ELB_ID=$(aws elb create-load-balancer --load-balancer-name TEST \ 
     --listeners "Protocol=HTTP,LoadBalancerPort=80,InstanceProtocol=HTTP,InstancePort=80" --subnets $SUBNET_ID --security-groups $SECURITY_GROUP)
 
-# --placement AvailabilityZone=value,GroupName=value,Tenancy=value
 INSTANCE_ID=$(aws ec2 run-instances --image-id ami-d85e75b0 --count 1 --instance-type t1.micro --placement AvailabilityZone=us-east-1a \ 
     --key-name 06_17 --security-group-ids $SECURITY_GROUP --subnet-id $SUBNET_ID --associate-public-ip-address\
     --query Instances[].InstanceId --output text) 
