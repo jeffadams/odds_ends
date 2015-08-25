@@ -14,8 +14,9 @@ from boto.ec2.regioninfo import RegionInfo
 import ConfigParser
 
 '''
-Make a snapshot of every volume with a tag of 'backup_name:somevalue'. The value must be unique among volumes in your account. 
-Use only with data volumes --  root volumes are likely to fail.
+Make a snapshot of every volume with a tag of 'backup_name:somevalue' and cleanup older ones. 
+The Name value must be unique among volumes in your account. 
+Use only with data volumes -- root volumes are likely to fail.
 Snapshots are kept for one day.
 '''
 
