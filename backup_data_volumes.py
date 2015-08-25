@@ -11,19 +11,20 @@ import time
 from boto.ec2.connection import EC2Connection
 from boto.ec2.regioninfo import RegionInfo
 
+import ConfigParser
+
 '''
 Make a snapshot of every volume with a tag of 'backup_name:somevalue'. The value must be unique among volumes in your account. 
 Use only with data volumes --  root volumes are likely to fail.
 Snapshots are kept for one day.
-
 '''
+
 my_logger = logging.getLogger(sys.argv[0])
 my_logger.setLevel(logging.DEBUG)
 handler = logging.handlers.SysLogHandler(address = '/dev/log')
 my_logger.addHandler(handler)
 
 def get_config():
-    import ConfigParser
     config = ConfigParser.ConfigParser()
     config.read(["/etc/nagios3/conf.d/.boto.cfg"])
     AWS_ACCESS_KEY  = config.get('Credentials','aws_access_key_id')
