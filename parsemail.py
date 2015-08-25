@@ -1,7 +1,11 @@
 #!/usr/bin/python
-# Crudely read an email line by line from stdin and send an 
+# This script lets you ACK a Nagios alert 
+# by replying to an email with the work "ACK". 
+
+# Crudely read the email line by line from stdin and send an 
 # acknowledgement command to Nagios if appropriate.
-# Use with procmail. 
+# Requires a procmail recipe to feed it.
+
 import os
 import re
 import sys
