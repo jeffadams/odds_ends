@@ -47,4 +47,4 @@ if __name__ == "__main__":
 stats = ['RequestCount', 'HTTPCode_Backend_2XX', 'HTTPCode_Backend_3XX', 'HTTPCode_ELB_4XX', 'HTTPCode_ELB_5XX','UnHealthyHostCount']
 for stat in stats:
      get_elb_stats(sys.argv[1], stat, 5, 300)
-
+#TODO Add alert thresholds and exit codes.
