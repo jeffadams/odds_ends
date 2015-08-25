@@ -18,7 +18,7 @@ else:
 try:
     r = urllib2.urlopen(URL)
     a = r.read()
-    data = json.loads(a) # This validates. 
+    data = json.loads(a)
 except (urllib2.HTTPError, IOError, ValueError, KeyError, TypeError) as e:
     errors = ("%s %s" % (URL, e))
     next
