@@ -22,23 +22,26 @@ Snapshots are kept for one day.
 
 my_logger = logging.getLogger(sys.argv[0])
 my_logger.setLevel(logging.DEBUG)
-handler = logging.handlers.SysLogHandler(address = '/dev/log')
+if sys.platform == 'darwin':
+    handler = logging.handlers.SysLogHandler(address = '/var/run/syslog')
+else:
+    handler = logging.handlers.SysLogHandler(address = '/dev/log')
 my_logger.addHandler(handler)
 
 def get_config():
     config = ConfigParser.ConfigParser()
     config.read(["/etc/nagios3/conf.d/.boto.cfg"])
-    AWS_ACCESS_KEY  = config.get('Credentials','aws_access_key_id')
-    AWS_SECRET_KEY  = config.get('Credentials','aws_secret_access_key')
+    AWS_ACCESS_KEY  = config.get('Credentials','access_key')
+    AWS_SECRET_KEY  = config.get('Credentials','secret_key')
     return[AWS_ACCESS_KEY, AWS_SECRET_KEY]
 
 creds = get_config()
 region = RegionInfo(name='us-east-1', endpoint='ec2.us-east-1.amazonaws.com')
 
 try:
-    conn = EC2Connection(aws_access_key_id=creds[0], aws_secret_access_key=creds[1], 'BACKUP_SECRET'), region=region)
+    conn = EC2Connection(aws_access_key_id=creds[0], aws_secret_access_key=creds[1], region=region)
 except AttributeError:
-    my_logger.critical("Not configured to run backups. Add BACKUP_KEY and BACKUP_SECRET to settings.")
+    my_logger.critical("Couldn't connect. Check credentials.")
     sys.exit()
 
 all_volumes = conn.get_all_volumes()
