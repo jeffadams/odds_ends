@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Very basic check for a return of valid JSON. 
+# Check for valid JSON. 
 
 import json
 import sys
