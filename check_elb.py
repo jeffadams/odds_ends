@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Simple Nagios check for unhealthy ELB hosts. 
+# Nagios check for unhealthy ELB hosts. 
 
 import datetime
 import sys
