@@ -6,10 +6,7 @@
 # acknowledgement command to Nagios if appropriate.
 # Requires a procmail recipe to feed it.
 
-import os
-import re
-import sys
-import time
+import os, re, sys, time
 
 ack = None
 cmd_fifo = "/var/lib/nagios3/rw/nagios.cmd"
