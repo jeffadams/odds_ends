@@ -48,22 +48,6 @@ all_volumes = conn.get_all_volumes()
 all_snaps   = conn.get_all_snapshots(owner='self')
 retention_period = 86400 
 
-def main():
-    for v in all_volumes:
-        d = {}
-        tags = conn.get_all_tags({'resource-id': v.id })
-        for t in tags:
-            d[t.name] = t.value
-
-        try:
-            backup_name = d['backup_name']
-        except KeyError:
-            backup_name = None
-
-        if backup_name:
-            make_snapshot(backup_name, v.id)
-            cleanup_snapshots(backup_name, retention_period)
-  
 def make_snapshot(backup_name, vol_id):
     readable_name = backup_name + "_backup"
     description   = ("%s backup %s" % (backup_name, datetime.now().strftime("%m-%d-%y")))
@@ -96,5 +80,21 @@ def cleanup_snapshots(backup_name, lifetime):
                 conn.delete_snapshot(s.id)
                 my_logger.info("Deleted %s snapshot %s" % (backup, s.id))
 
+def main():
+    for v in all_volumes:
+        d = {}
+        tags = conn.get_all_tags({'resource-id': v.id })
+        for t in tags:
+            d[t.name] = t.value
+
+        try:
+            backup_name = d['backup_name']
+        except KeyError:
+            backup_name = None
+
+        if backup_name:
+            make_snapshot(backup_name, v.id)
+            cleanup_snapshots(backup_name, retention_period)
+ 
 if __name__ == '__main__':
     main()
