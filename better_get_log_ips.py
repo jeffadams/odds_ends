@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from collections import Counter, OrderedDict
+from collections import Counter
 import sys
 
 if len(sys.argv) < 2:
