@@ -27,4 +27,9 @@ else:
     all_ips = OrderedDict(sorted(a.items(), key=lambda t: t[1], reverse=True))
 
     for x in all_ips:
-        print all_ips[x], x 
+        print all_ips[x], x
+
+# This works but the last bit is unnecessary. 
+# Didn't know about most_common until about 5 minutes before time ran out. It's
+# cool!
+# See https://github.com/jeffadams/odds_ends/blob/master/better_get_log_ips.py
