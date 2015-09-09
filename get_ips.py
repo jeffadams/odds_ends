@@ -16,7 +16,7 @@ class GetIps(object):
             results.append(x[0])
 
         if offset is not None:
-            ip_list = Counter(results).most_common(int(offset))
+            ip_list = Counter(results).most_common(offset)
     	else:
             ip_list = Counter(results).most_common(len(results))
         return ip_list
@@ -27,7 +27,7 @@ def main(args):
         sys.exit(0)
     l = GetIps()
     if len(args) == 3:
-        a = l.count(args[1], args[2])
+        a = l.count(args[1], int(args[2]))
     else:
         a = l.count(args[1])
     for x in a:
