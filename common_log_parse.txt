@@ -1,10 +1,10 @@
 Get top IPs from an access log, assuming the Common Log Format:
-    awk '{ print $1 }' 2014-07-14_15.access.log | sort | uniq -c | sort -rn
+    awk '{ print $1 }' access.log | sort | uniq -c | sort -rn
 
 Get the top URL:
-    awk '{ print $7 }' 2014-07-14_15.access.log | sort | uniq -c | sort -rn
+    awk '{ print $7 }' access.log | sort | uniq -c | sort -rn
 
 Get IPs requesting pages returning a 400:
-    awk '( $9 ~ /400/)' 2014-07-14_15.access.log | awk '{ print $1 }' | sort | uniq -c  | sort -rn
+    awk '( $9 ~ /400/)' access.log | awk '{ print $1 }' | sort | uniq -c  | sort -rn
 
 Etc.
