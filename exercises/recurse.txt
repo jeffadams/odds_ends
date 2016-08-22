@@ -1,4 +1,4 @@
-Count the number of zeros in an array using "head" recursion. 
+Count the number of zeros in an array using "head" recursion. First Python, then C. 
 
 ###############
 nums = [0,0,0,0,0,2,3,4,5,6]
