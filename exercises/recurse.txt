@@ -10,7 +10,7 @@ def countme(a, size):
         count += 1
     return count
 
-b = countme(nums, len(mylist))
+b = countme(nums, len(nums))
 print b 
 
 
