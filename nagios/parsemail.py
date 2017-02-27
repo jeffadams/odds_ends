@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # This script lets you ACK a Nagios alert 
 # by replying to an email with the work "ACK". 
 
