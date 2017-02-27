@@ -2,7 +2,7 @@
 # iSentry is a nifty free program that uses the Mac's builtin camera
 # to take snapshots when it detects motion. 
 # This script watches the iSentry directory (must be configured)
-# and uploads the snapshots to S3. Also requires the s3cmd.  
+# and uploads the snapshots to S3. Requires the s3cmd.  
 
 import os, sys, time
 
