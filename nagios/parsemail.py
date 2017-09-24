@@ -1,6 +1,6 @@
 #!/bin/env python
 # This script lets you ACK a Nagios alert 
-# by replying to an email with the work "ACK". 
+# by replying to an email with the word "ACK". 
 
 # Crudely read the email line by line from stdin and send an 
 # acknowledgement command to Nagios if appropriate.
